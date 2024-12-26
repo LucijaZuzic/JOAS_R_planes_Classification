@@ -167,6 +167,10 @@ The $R$ script $visualise\\_class\\_new\\_time.R$ generates illustrations of cla
 
 The Python script $confmatr.py$ calculates confusion matrix performance indicators for classification results on the testing data that are saved into the file $predictions\\_test\\_new.csv$ by the $R$ script $classify\\_flight\\_new.R$. Confusion matrix performance indicators are formatted into a Latex table that is then printed into standard output.
 
+### $mcnemar.py$
+
+The Python script $mcnemar.py$ calculates the results of McNemar's test for classification results on the testing data that are saved into the file $predictions\\_test\\_new.csv$ by the $R$ script $classify\\_flight\\_new.R$. The data is saved in $.png$, $.pdf$, and $.svg$ format in files named $mcnemarplot$.
+
 ### $read\\_ex\\_time.py$
 
 The Python script $read\\_ex\\_time.py$ reads execution time for performing training and testing using the evaluated models that was saved into the file $time.txt$ by the $R$ script $classify\\_flight\\_new\\_time.R$, and formatting it into a Latex table that is then printed into standard output. The execution time is computed by training on the training data and performing classification on the testing data defined in the file $features\\_traj\\_new.csv$ created by the $R$ script $bbox\\_flight\\_new.R$.
