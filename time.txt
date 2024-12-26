@@ -1,0 +1,144 @@
+[1] "Model name"
+[1] "k-NN"
+[1] "Train time"
+   user  system elapsed 
+   1.89    0.04    1.94 
+[1] "Train time no METAR"
+   user  system elapsed 
+   1.61    0.00    1.59 
+[1] "Train time METAR"
+   user  system elapsed 
+   1.42    0.08    1.53 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   1.47    0.00    1.47 
+[1] "Model name"
+[1] "Linear SVM"
+[1] "Train time"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.01    0.00    0.00 
+[1] "Train time METAR"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+      0       0       0 
+[1] "Model name"
+[1] "RBF SVM"
+[1] "Train time"
+   user  system elapsed 
+   0.02    0.00    0.00 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.01    0.00    0.00 
+[1] "Train time METAR"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+      0       0       0 
+Using automatic sigma estimation (sigest) for RBF or laplace kernel 
+Using automatic sigma estimation (sigest) for RBF or laplace kernel 
+Using automatic sigma estimation (sigest) for RBF or laplace kernel 
+Using automatic sigma estimation (sigest) for RBF or laplace kernel 
+[1] "Model name"
+[1] "Gaussian Process"
+[1] "Train time"
+   user  system elapsed 
+   0.25    0.00    0.23 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.09    0.00    0.11 
+[1] "Train time METAR"
+   user  system elapsed 
+   0.04    0.00    0.05 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.07    0.00    0.08 
+[1] "Model name"
+[1] "Decision Tree"
+[1] "Train time"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.01    0.00    0.00 
+[1] "Train time METAR"
+   user  system elapsed 
+   0.01    0.00    0.02 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.01    0.00    0.00 
+[1] "Model name"
+[1] "Random Forest"
+[1] "Train time"
+   user  system elapsed 
+   0.06    0.00    0.07 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.04    0.00    0.05 
+[1] "Train time METAR"
+   user  system elapsed 
+   0.06    0.00    0.06 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.04    0.00    0.05 
+[1] "Model name"
+[1] "Naive Bayes"
+[1] "Train time"
+   user  system elapsed 
+   0.02    0.00    0.02 
+[1] "Train time no METAR"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time METAR"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.02    0.00    0.00 
+[1] "Model name"
+[1] "Multilayer Perceptron"
+[1] "Train time"
+   user  system elapsed 
+   0.75    0.01    0.75 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.61    0.00    0.63 
+[1] "Train time METAR"
+   user  system elapsed 
+   0.46    0.00    0.49 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.38    0.02    0.38 
+[1] "Model name"
+[1] "AdaBoost"
+[1] "Train time"
+   user  system elapsed 
+   0.89    0.01    0.91 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.77    0.02    0.79 
+[1] "Train time METAR"
+   user  system elapsed 
+   0.63    0.00    0.62 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+   0.58    0.00    0.59 
+[1] "Model name"
+[1] "Quadratic Discriminant Analysis"
+[1] "Train time"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time no METAR"
+   user  system elapsed 
+   0.02    0.00    0.00 
+[1] "Train time METAR"
+   user  system elapsed 
+      0       0       0 
+[1] "Train time traj distance traj dc"
+   user  system elapsed 
+      0       0       0 

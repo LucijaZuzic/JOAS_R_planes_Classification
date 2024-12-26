@@ -1,0 +1,239 @@
+# Including the e1071 library for the Support Vector Machine method
+
+library(e1071)
+
+# Including the kernlab library for the Gaussian proccess method
+
+library(kernlab)
+
+# Including the rpart library for the Decision Tree Method
+
+library(rpart)
+
+# Including the rpart.plot library for the Decision Tree Method visualisation
+
+library(rpart.plot)
+
+# Including the randomForest library for the Random Forest method
+
+library(randomForest)
+
+# Including the naivebayes library for the Naive Bayesov method
+
+library(naivebayes)
+
+# Including the fdm2id library for the Multilayer Perceptron method
+
+library(fdm2id)
+
+# Including the nnet library for the Multilayer Perceptron method
+
+library(nnet)
+
+# Including the caret library for the confusionMatrix, knn3, and train functions
+
+library(caret)
+
+# Including the class library for working with classes,
+# and the confusionMatrix, knn3, and train functions
+
+library(class)
+
+# Including the MASS library for the Quadratic Discriminant Analysis method
+
+library(MASS)
+
+# Including the JOUSBoost library for the AdaBoost method
+
+library(JOUSBoost)
+
+model_use <- function(
+    model_name, train_data, test_data,
+    train_label, test_label, grid_data = list(), tree_name = "") {
+  set.seed(42)
+
+  k_val <- -1
+
+  grid_predicted <- grid_data
+
+  if (model_name == "k-NN") {
+    k_val <- 1
+    list_k <- c()
+    while (k_val <= 20) {
+      list_k <- c(list_k, k_val)
+      k_val <- k_val + 1
+    }
+
+    knn_model <- train(
+      x = train_data, y = train_label,
+      method = "knn",
+      trControl = trainControl(
+        method = "repeatedcv",
+        number = 10, repeats = 3
+      ),
+      tuneGrid = data.frame(k = list_k)
+    )
+    k_val <- knn_model$bestTune$k
+
+    classifier_knn <- knn3(x = train_data, y = train_label, k = k_val)
+    train_predicted <- predict(classifier_knn, train_data, type = "class")
+    test_predicted <- predict(classifier_knn, test_data, type = "class")
+
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(classifier_knn, grid_data, type = "class")
+    }
+  }
+
+  if (model_name == "Linear SVM") {
+    lsvm <- svm(
+      x = train_data, y = train_label,
+      type = "C-classification",
+      kernel = "linear"
+    )
+    train_predicted <- fitted(lsvm)
+    test_predicted <- predict(lsvm, test_data)
+
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(lsvm, grid_data)
+    }
+  }
+
+  if (model_name == "RBF SVM") {
+    rbf_svm <- svm(
+      x = train_data, y = train_label,
+      type = "C-classification", kernel = "radial"
+    )
+    train_predicted <- fitted(rbf_svm)
+    test_predicted <- predict(rbf_svm, test_data)
+
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(rbf_svm, grid_data)
+    }
+  }
+
+  if (model_name == "Gaussian Process") {
+    gaussian_process <- gausspr(x = train_data, y = train_label)
+    train_predicted <- predict(gaussian_process, train_data)
+    test_predicted <- predict(gaussian_process, test_data)
+    if (length(grid_data) != 0) {
+      len_of_frame <- length(train_data[, 1]) - 1
+      start_frame <- 1
+      grid_predicted <- c()
+      while (start_frame < length(grid_data[, 1])) {
+        grid_predicted_1 <- predict(
+          gaussian_process,
+          grid_data[start_frame:min(
+            start_frame +
+              len_of_frame,
+            length(grid_data[, 1])
+          ), ]
+        )
+        start_frame <- min(
+          start_frame + len_of_frame,
+          length(grid_data[, 1])
+        ) + 1
+        for (sv in grid_predicted_1) {
+          grid_predicted <- c(grid_predicted, sv)
+        }
+      }
+    }
+  }
+
+  if (model_name == "Decision Tree") {
+    train_data_with_label <- data.frame(
+      x = train_data,
+      y = as.factor(train_label)
+    )
+    test_data_with_label <- data.frame(x = test_data, y = as.factor(test_label))
+    tree <- rpart(y ~ ., data = train_data_with_label, method = "class")
+
+    if (tree_name != "") {
+
+      rpart.plot(tree)
+
+      # Saving the Decision Tree plot
+
+      dev.copy(pdf, tree_name)
+
+      # Closing the Decision Tree plot
+
+      if (length(dev.list()) > 0) {
+        for (dev_sth_open in dev.list()[1]:dev.list()[length(dev.list())]) {
+          dev.off()
+        }
+      }
+
+    }
+
+    train_predicted <- predict(tree, train_data_with_label, type = "class")
+    test_predicted <- predict(tree, test_data_with_label, type = "class")
+    if (length(grid_data) != 0) {
+      grid_class <- c()
+      for (i in grid_data) {
+        grid_class <- c(grid_class, 1)
+      }
+      grid_data_with_label <- data.frame(
+        x = grid_data,
+        y = as.factor(grid_class)
+      )
+      grid_predicted <- predict(tree, grid_data_with_label, type = "class")
+    }
+  }
+
+  if (model_name == "Random Forest") {
+    rf <- randomForest(x = train_data, y = train_label, proximity = TRUE)
+    train_predicted <- rf$predicted
+    test_predicted <- predict(rf, test_data)
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(rf, grid_data)
+    }
+  }
+
+  if (model_name == "Naive Bayes") {
+    naive_bayes_model <- gaussian_naive_bayes(
+      x = data.matrix(train_data),
+      y = train_label
+    )
+    train_predicted <- predict(naive_bayes_model, data.matrix(train_data))
+    test_predicted <- predict(naive_bayes_model, data.matrix(test_data))
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(naive_bayes_model, data.matrix(grid_data))
+    }
+  }
+
+  if (model_name == "Multilayer Perceptron") {
+    multilayer_perceptron <- MLP(train = train_data, labels = train_label)
+    train_predicted <- predict(multilayer_perceptron, train_data)
+    test_predicted <- predict(multilayer_perceptron, test_data)
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(multilayer_perceptron, grid_data)
+    }
+  }
+
+  if (model_name == "AdaBoost") {
+    train_label <- as.numeric(as.character(train_label))
+    adaboost_model <- adaboost(X = data.matrix(train_data), y = train_label)
+    train_predicted <- predict(adaboost_model, data.matrix(train_data))
+    test_predicted <- predict(adaboost_model, data.matrix(test_data))
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(adaboost_model, data.matrix(grid_data))
+    }
+  }
+
+  if (model_name == "Quadratic Discriminant Analysis") {
+    qda_model <- qda(x = train_data, grouping = train_label)
+    train_predicted <- predict(qda_model, train_data)$class
+    test_predicted <- predict(qda_model, test_data)$class
+    if (length(grid_data) != 0) {
+      grid_predicted <- predict(qda_model, grid_data)$class
+    }
+  }
+
+  return(list(
+    "train_predicted" = train_predicted,
+    "test_predicted" = test_predicted,
+    "grid_predicted" = grid_predicted,
+    "k_val" = k_val
+  ))
+
+}

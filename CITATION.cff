@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Žužić"
+  given-names: "Lucija"
+  orcid: "https://orcid.org/0009-0007-6788-7522"
+- family-names: "Štajduhar"
+  given-names: "Ivan"
+  orcid: "https://orcid.org/0000-0003-4758-7972"
+- family-names: "Lerga"
+  given-names: "Jonatan"
+  orcid: "https://orcid.org/0000-0002-4058-8449"
+- family-names: "Filjar"
+  given-names: "Renato"
+  orcid: "https://orcid.org/0000-0002-7040-9931"
+title: "Classification of departure flight trajectory segments from the Zagreb Pleso airport"
+version: v1
+doi: 10.5281/zenodo.14502657
+date-released: 2024-12-16
+url: "https://github.com/LucijaZuzic/JOAS_R_planes_Classification"
