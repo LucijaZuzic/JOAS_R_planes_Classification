@@ -169,7 +169,7 @@ The Python script $confmatr.py$ calculates confusion matrix performance indicato
 
 ### $mcnemar.py$
 
-The Python script $mcnemar.py$ calculates the results of McNemar's test for classification results on the testing data that are saved into the file $predictions\\_test\\_new.csv$ by the $R$ script $classify\\_flight\\_new.R$. The data is saved in $.png$, $.pdf$, and $.svg$ format in files named $mcnemarplot$.
+The Python script $mcnemar.py$ calculates the results of McNemar's test for classification results on the testing data that are saved into the file $predictions\\_test\\_new.csv$ by the $R$ script $classify\\_flight\\_new.R$. The data is saved in $.png$, $.pdf$, and $.svg$ format in files named $mcnemarplot$, and in a numerical format in the file $mcnemar.csv$.
 
 ### $read\\_ex\\_time.py$
 
