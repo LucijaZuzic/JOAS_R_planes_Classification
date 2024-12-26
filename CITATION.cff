@@ -14,7 +14,7 @@ authors:
   given-names: "Renato"
   orcid: "https://orcid.org/0000-0002-7040-9931"
 title: "Classification of departure flight trajectory segments from the Zagreb Pleso airport"
-version: v1.0.1
-doi: 10.5281/zenodo.14559851
+version: v1.0.2
+doi: 10.5281/zenodo.14559881
 date-released: 2024-12-26
 url: "https://github.com/LucijaZuzic/JOAS_R_planes_Classification"
