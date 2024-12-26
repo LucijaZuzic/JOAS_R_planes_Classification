@@ -10,6 +10,7 @@ test_label,k-NN_no_METAR_3,65,6,21,1,exact,0.125,1.0
 test_label,k-NN_METAR_7,57,14,5,17,correction,0.7194375444233914,0.12903225806451613
 test_label,k-NN_METAR_7,57,14,5,17,no,0.590013887163346,0.2903225806451613
 test_label,k-NN_METAR_7,57,14,5,17,exactcorrection,0.720100131817162,14.0
+test_label,k-NN_METAR_7,57,14,5,17,exact,0.720100131817162,14.0
 test_label,k-NN_traj_distance_traj_dc_3,68,3,21,1,correction,0.6170750774519739,0.25
 test_label,k-NN_traj_distance_traj_dc_3,68,3,21,1,no,0.31731050786291115,1.0
 test_label,k-NN_traj_distance_traj_dc_3,68,3,21,1,exactcorrection,0.625,1.0
